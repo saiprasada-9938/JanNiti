@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JanNiti | Citizen Development Portal</title>
+
+    <link rel="stylesheet" href="style.css">
+
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="container nav-container">
+
+            <a href="#home" class="logo">
+
+                <div class="logo-symbol">
+                    JP
+                </div>
+
+                <div class="logo-text">
+                    <strong>JanNiti</strong>
+                    <span>Citizen Development Portal</span>
+                </div>
+
+            </a>
+
+
+            <nav class="navbar">
+
+                <a href="#home" class="nav-link active">Home</a>
+
+                <a href="#submit" class="nav-link">
+                    Submit Complaint
+                </a>
+
+                <a href="#track" class="nav-link">
+                    Track Complaint
+                </a>
+
+                <a href="#about" class="nav-link">
+                    About
+                </a>
+
+            </nav>
+
+
+            <button class="mobile-menu" id="mobileMenu">
+                ☰
+            </button>
+
+        </div>
+
+    </header>
+
+
+
+    <main>
+
+        <!-- ================= HOME ================= -->
+
+        <section id="home" class="hero">
+
+            <div class="hero-overlay"></div>
+
+            <div class="container hero-content">
+
+                <div class="hero-badge">
+                    CITIZEN DEVELOPMENT INITIATIVE
+                </div>
+
+                <h1>
+                    Your Voice.
+                    <span>Your Community.</span>
+                    Your Future.
+                </h1>
+
+                <p>
+                    A simple digital platform for citizens to report
+                    local problems, track complaints and contribute
+                    towards better community development.
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <a href="#submit" class="btn btn-primary">
+                        Submit a Complaint
+                        <span>→</span>
+                    </a>
+
+                    <a href="#track" class="btn btn-outline">
+                        Track Complaint
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= QUICK ACTIONS ================= -->
+
+        <section class="quick-actions">
+
+            <div class="container">
+
+                <div class="section-heading center">
+
+                    <span class="small-title">
+                        CITIZEN SERVICES
+                    </span>
+
+                    <h2>
+                        How can we help you?
+                    </h2>
+
+                    <p>
+                        Choose a service to raise or track your concern.
+                    </p>
+
+                </div>
+
+
+                <div class="action-grid">
+
+                    <!-- Submit -->
+
+                    <a href="#submit" class="action-card">
+
+                        <div class="action-icon green">
+                            📝
+                        </div>
+
+                        <h3>
+                            Submit a Complaint
+                        </h3>
+
+                        <p>
+                            Report a local issue or development-related
+                            concern to help bring attention to your community.
+                        </p>
+
+                        <span class="card-link">
+                            Submit Now →
+                        </span>
+
+                    </a>
+
+
+                    <!-- Track -->
+
+                    <a href="#track" class="action-card">
+
+                        <div class="action-icon blue">
+                            🔍
+                        </div>
+
+                        <h3>
+                            Track Complaint
+                        </h3>
+
+                        <p>
+                            Enter your Complaint ID to check the current
+                            status of your submitted complaint.
+                        </p>
+
+                        <span class="card-link">
+                            Track Now →
+                        </span>
+
+                    </a>
+
+
+                    <!-- About -->
+
+                    <a href="#about" class="action-card">
+
+                        <div class="action-icon gold">
+                            ℹ️
+                        </div>
+
+                        <h3>
+                            About the Initiative
+                        </h3>
+
+                        <p>
+                            Learn how citizen feedback can contribute to
+                            better planning and community development.
+                        </p>
+
+                        <span class="card-link">
+                            Learn More →
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= SUBMIT COMPLAINT ================= -->
+
+        <section id="submit" class="section submit-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span class="small-title">
+                        CITIZEN SERVICE
+                    </span>
+
+                    <h2>
+                        Submit a Complaint
+                    </h2>
+
+                    <p>
+                        Please provide accurate information so that your
+                        concern can be properly recorded.
+                    </p>
+
+                </div>
+
+
+                <div class="form-wrapper">
+
+                    <div class="form-header">
+
+                        <div>
+                            <span class="form-number">
+                                01
+                            </span>
+
+                            <div>
+                                <h3>
+                                    Complaint Details
+                                </h3>
+
+                                <p>
+                                    All fields marked with * are required.
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <form id="complaintForm">
+
+                        <!-- Personal Details -->
+
+                        <div class="form-section">
+
+                            <h4>
+                                Personal Information
+                            </h4>
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+
+                                    <label for="name">
+                                        Full Name *
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        placeholder="Enter your full name"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="phone">
+                                        Mobile Number
+                                    </label>
+
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        placeholder="Enter mobile number"
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Location -->
+
+                        <div class="form-section">
+
+                            <h4>
+                                Location
+                            </h4>
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+
+                                    <label for="village">
+                                        Village / Locality *
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="village"
+                                        placeholder="Enter village or locality"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="district">
+                                        District *
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="district"
+                                        placeholder="Enter district"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Complaint -->
+
+                        <div class="form-section">
+
+                            <h4>
+                                Complaint Information
+                            </h4>
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+
+                                    <label for="category">
+                                        Problem Category *
+                                    </label>
+
+                                    <select id="category" required>
+
+                                        <option value="">
+                                            Select a category
+                                        </option>
+
+                                        <option value="Roads">
+                                            Roads & Infrastructure
+                                        </option>
+
+                                        <option value="Healthcare">
+                                            Healthcare
+                                        </option>
+
+                                        <option value="Education">
+                                            Education
+                                        </option>
+
+                                        <option value="Water">
+                                            Water & Sanitation
+                                        </option>
+
+                                        <option value="Electricity">
+                                            Electricity
+                                        </option>
+
+                                        <option value="Employment">
+                                            Employment
+                                        </option>
+
+                                        <option value="Transport">
+                                            Public Transport
+                                        </option>
+
+                                        <option value="Other">
+                                            Other
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="language">
+                                        Preferred Language *
+                                    </label>
+
+                                    <select id="language" required>
+
+                                        <option value="">
+                                            Select language
+                                        </option>
+
+                                        <option value="Assamese">
+                                            Assamese
+                                        </option>
+
+                                        <option value="Bengali">
+                                            Bengali
+                                        </option>
+
+                                        <option value="Bodo">
+                                            Bodo
+                                        </option>
+
+                                        <option value="Dogri">
+                                            Dogri
+                                        </option>
+
+                                        <option value="Gujarati">
+                                            Gujarati
+                                        </option>
+
+                                        <option value="Hindi">
+                                            Hindi
+                                        </option>
+
+                                        <option value="Kannada">
+                                            Kannada
+                                        </option>
+                                        
+                                        <option value="Kashmiri">
+                                            Kashmiri
+                                        </option>
+
+                                        <option value="Konkani">
+                                            Konkani
+                                        </option>
+
+                                        <option value="Maithili">
+                                            Maithili
+                                        </option>
+
+                                        <option value="Malayalam">
+                                            Malayalam
+                                        </option>
+                                        
+                                        <option value="Manipuri">
+                                            Manipuri
+                                        </option>
+
+                                        <option value="Marathi">
+                                            Marathi
+                                        </option>
+
+                                        <option value="Odia">
+                                            Odia
+                                        </option>
+
+                                        <option value="Punjabi">
+                                            Punjabi
+                                        </option>
+                                        
+                                        <option value="Sanskrit">
+                                            Sanskrit
+                                        </option>
+
+                                         <option value="Santali">
+                                            Santali
+                                        </option>
+
+                                        <option value="Sindhi">
+                                            Sindhi
+                                        </option>
+
+                                        <option value="Tamil">
+                                            Tamil
+                                        </option>
+
+                                        <option value="Telugu">
+                                            Telugu
+                                        </option>
+                                        
+                                        <option value="Urdu">
+                                            Urdu
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    How serious is the problem? *
+                                </label>
+
+                                <div class="severity-options">
+
+                                    <label class="severity-card low">
+
+                                        <input
+                                            type="radio"
+                                            name="severity"
+                                            value="Low"
+                                            required
+                                        >
+
+                                        <span>
+                                            🟢
+                                        </span>
+
+                                        <div>
+                                            <strong>Low</strong>
+                                            <small>
+                                                General inconvenience
+                                            </small>
+                                        </div>
+
+                                    </label>
+
+
+                                    <label class="severity-card medium">
+
+                                        <input
+                                            type="radio"
+                                            name="severity"
+                                            value="Medium"
+                                        >
+
+                                        <span>
+                                            🟡
+                                        </span>
+
+                                        <div>
+                                            <strong>Medium</strong>
+                                            <small>
+                                                Needs attention soon
+                                            </small>
+                                        </div>
+
+                                    </label>
+
+
+                                    <label class="severity-card high">
+
+                                        <input
+                                            type="radio"
+                                            name="severity"
+                                            value="High"
+                                        >
+
+                                        <span>
+                                            🔴
+                                        </span>
+
+                                        <div>
+                                            <strong>High</strong>
+                                            <small>
+                                                Requires urgent attention
+                                            </small>
+                                        </div>
+
+                                    </label>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="description">
+                                    Describe Your Problem *
+                                </label>
+
+                                <textarea
+                                    id="description"
+                                    rows="6"
+                                    placeholder="Please describe the problem clearly..."
+                                    required
+                                ></textarea>
+
+                                <div class="smart-tools">
+                                    <button type="button" class="smart-tool" id="voiceButton">
+                                        🎤 Speak Complaint
+                                    </button>
+                                    <button type="button" class="smart-tool" id="similarButton">
+                                        🔎 Check Similar Complaints
+                                    </button>
+                                </div>
+                                <p id="voiceStatus" class="smart-status"></p>
+                                <div id="similarResults" class="smart-results hidden"></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Photo -->
+
+                        <div class="form-section">
+
+                            <h4>
+                                Supporting Evidence
+                            </h4>
+
+                            <div class="upload-box">
+
+                                <div class="upload-icon">
+                                    📷
+                                </div>
+
+                                <h4>
+                                    Upload a Photograph
+                                </h4>
+
+                                <p>
+                                    A photograph can help explain the issue.
+                                    This is optional.
+                                </p>
+
+                                <label for="photo" class="upload-button">
+                                    Choose Photo
+                                </label>
+
+                                <input
+                                    type="file"
+                                    id="photo"
+                                    accept="image/*"
+                                    hidden
+                                >
+
+                                <p id="fileName" class="file-name"></p>
+
+                                <img
+                                    id="photoPreview"
+                                    class="photo-preview"
+                                    alt="Selected complaint photo"
+                                >
+
+                                <div id="photoAnalysis" class="photo-analysis hidden"></div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Submit -->
+
+                        <div class="form-footer">
+
+                            <p>
+                                By submitting this form, you confirm that
+                                the information provided is accurate.
+                            </p>
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary submit-button"
+                            >
+                                Submit Complaint
+                                <span>→</span>
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= SUCCESS ================= -->
+
+        <section
+            id="success"
+            class="success-section hidden"
+        >
+
+            <div class="container">
+
+                <div class="success-card">
+
+                    <div class="success-icon">
+                        ✓
+                    </div>
+
+                    <span class="small-title">
+                        SUBMISSION SUCCESSFUL
+                    </span>
+
+                    <h2>
+                        Your complaint has been submitted.
+                    </h2>
+
+                    <p>
+                        Please save your Complaint ID. You will need it
+                        to track the status of your complaint.
+                    </p>
+
+
+                    <div class="complaint-id-box">
+
+                        <span>
+                            YOUR COMPLAINT ID
+                        </span>
+
+                        <strong id="generatedId">
+                            CMP-1001
+                        </strong>
+
+                    </div>
+
+
+                    <div class="success-buttons">
+
+                        <button
+                            class="btn btn-primary"
+                            onclick="copyComplaintId()"
+                        >
+                            Copy Complaint ID
+                        </button>
+
+                        <a
+                            href="#track"
+                            class="btn btn-secondary"
+                        >
+                            Track Complaint
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= TRACK ================= -->
+
+        <section id="track" class="section track-section">
+
+            <div class="container">
+
+                <div class="section-heading center">
+
+                    <span class="small-title">
+                        COMPLAINT STATUS
+                    </span>
+
+                    <h2>
+                        Track Your Complaint
+                    </h2>
+
+                    <p>
+                        Enter the Complaint ID you received after
+                        submitting your complaint.
+                    </p>
+
+                </div>
+
+
+                <div class="track-card">
+
+                    <form id="trackForm">
+
+                        <label for="trackId">
+                            Complaint ID
+                        </label>
+
+                        <div class="track-input">
+
+                            <input
+                                type="text"
+                                id="trackId"
+                                placeholder="Example: CMP-1001"
+                                required
+                            >
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary"
+                            >
+                                Track
+                            </button>
+
+                        </div>
+
+                    </form>
+
+
+                    <div
+                        id="trackResult"
+                        class="track-result hidden"
+                    >
+
+                        <!-- Javascript will insert result here -->
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= ABOUT ================= -->
+
+        <section id="about" class="section about-section">
+
+            <div class="container">
+
+                <div class="about-grid">
+
+                    <div class="about-content">
+
+                        <span class="small-title">
+                            ABOUT THE INITIATIVE
+                        </span>
+
+                        <h2>
+                            Building better communities
+                            through citizen participation.
+                        </h2>
+
+                        <p>
+                            JanNiti is a citizen-focused digital platform
+                            designed to provide a simple and accessible
+                            way for people to communicate development-related
+                            problems in their communities.
+                        </p>
+
+                        <p>
+                            The platform organizes citizen complaints by
+                            category, location and urgency so that important
+                            community concerns can be identified and given
+                            appropriate attention.
+                        </p>
+
+                    </div>
+
+
+                    <div class="about-card">
+
+                        <h3>
+                            How It Works
+                        </h3>
+
+                        <div class="process-item">
+
+                            <span>01</span>
+
+                            <div>
+                                <strong>Submit</strong>
+
+                                <p>
+                                    Tell us about a problem in your area.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="process-item">
+
+                            <span>02</span>
+
+                            <div>
+                                <strong>Record</strong>
+
+                                <p>
+                                    Your complaint receives a unique ID.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="process-item">
+
+                            <span>03</span>
+
+                            <div>
+                                <strong>Track</strong>
+
+                                <p>
+                                    Use your ID to check complaint status.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="process-item">
+
+                            <span>04</span>
+
+                            <div>
+                                <strong>Improve</strong>
+
+                                <p>
+                                    Citizen feedback helps identify
+                                    community priorities.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="container footer-content">
+
+            <div>
+
+                <div class="footer-logo">
+                    JanNiti
+                </div>
+
+                <p>
+                    Citizen Development Portal
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="#home">
+                    Home
+                </a>
+
+                <a href="#submit">
+                    Submit Complaint
+                </a>
+
+                <a href="#track">
+                    Track Complaint
+                </a>
+
+                <a href="#about">
+                    About
+                </a>
+
+            </div>
+
+
+            <div class="footer-bottom">
+                © 2026 JanNiti. Prototype for Hackathon Demonstration.
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <!-- Toast -->
+
+    <div
+        id="toast"
+        class="toast"
+    >
+        Complaint ID copied!
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>

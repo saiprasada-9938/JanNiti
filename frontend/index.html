@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JanNiti | Citizen Development Portal</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- =====================================================
+     LANDING PAGE - ROLE SELECTOR
+===================================================== -->
+<div id="landingPage" class="landing-page">
+
+    <header class="landing-header">
+        <div class="container nav-container">
+            <div class="logo">
+                <div class="logo-symbol">JP</div>
+                <div class="logo-text">
+                    <strong>JanNiti</strong>
+                    <span>Citizen Development Portal</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="landing-hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="hero-badge">CITIZEN DEVELOPMENT INITIATIVE</div>
+            <h1>Your Voice.<span>Your Community.</span>Your Future.</h1>
+            <p>A simple digital platform for citizens to report local problems, track complaints and contribute towards better community development.</p>
+        </div>
+    </section>
+
+    <section class="role-selector">
+        <div class="container">
+            <div class="section-heading center">
+                <span class="small-title">SELECT YOUR PORTAL</span>
+                <h2>Choose How You Want to Access</h2>
+                <p>Select your role to access the appropriate portal.</p>
+            </div>
+
+            <div class="role-grid">
+                <div class="role-card" onclick="showPortal('citizen')">
+                    <div class="role-icon citizen-icon">
+                        <span>&#x1F464;</span>
+                    </div>
+                    <h3>Citizen Portal</h3>
+                    <p>Submit complaints, track your submissions, and contribute to community development.</p>
+                    <ul class="role-features">
+                        <li>Submit a Complaint</li>
+                        <li>Track Complaint Status</li>
+                        <li>Voice Complaint Support</li>
+                        <li>Photo Evidence Upload</li>
+                    </ul>
+                    <span class="role-btn">Access Citizen Portal &rarr;</span>
+                </div>
+
+                <div class="role-card" onclick="showPortal('admin')">
+                    <div class="role-icon admin-icon">
+                        <span>&#x1F3DB;</span>
+                    </div>
+                    <h3>Admin Portal</h3>
+                    <p>Manage complaints, analyze data, and prioritize community issues.</p>
+                    <ul class="role-features">
+                        <li>Dashboard Overview</li>
+                        <li>Complaint Management</li>
+                        <li>Data Analysis</li>
+                        <li>Priority Issue Tracking</li>
+                    </ul>
+                    <span class="role-btn">Access Admin Portal &rarr;</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div>
+                <div class="footer-logo">JanNiti</div>
+                <p>Citizen Development Portal</p>
+            </div>
+            <div class="footer-bottom">&copy; 2026 JanNiti. Prototype for Hackathon Demonstration.</div>
+        </div>
+    </footer>
+</div>
+
+
+<!-- =====================================================
+     CITIZEN PORTAL
+===================================================== -->
+<div id="citizenPortal" class="portal hidden">
+
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo" onclick="showPortal('landing'); return false;">
+                <div class="logo-symbol">JP</div>
+                <div class="logo-text">
+                    <strong>JanNiti</strong>
+                    <span>Citizen Development Portal</span>
+                </div>
+            </a>
+            <nav class="navbar">
+                <a href="#citizen-home" class="nav-link active" data-citizen-nav="home">Home</a>
+                <a href="#citizen-submit" class="nav-link" data-citizen-nav="submit">Submit Complaint</a>
+                <a href="#citizen-track" class="nav-link" data-citizen-nav="track">Track Complaint</a>
+                <a href="#citizen-about" class="nav-link" data-citizen-nav="about">About</a>
+                <a href="#" class="nav-link switch-link" onclick="showPortal('admin'); return false;">Switch to Admin</a>
+                <a href="#" class="nav-link" onclick="showPortal('landing'); return false;">Home</a>
+            </nav>
+            <button class="mobile-menu" id="mobileMenu">&#9776;</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- HOME -->
+        <section id="citizen-home" class="hero citizen-section active-section">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <div class="hero-badge">CITIZEN DEVELOPMENT INITIATIVE</div>
+                <h1>Your Voice.<span>Your Community.</span>Your Future.</h1>
+                <p>A simple digital platform for citizens to report local problems, track complaints and contribute towards better community development.</p>
+                <div class="hero-buttons">
+                    <a href="#citizen-submit" class="btn btn-primary" onclick="showCitizenSection('submit')">Submit a Complaint <span>&rarr;</span></a>
+                    <a href="#citizen-track" class="btn btn-outline" onclick="showCitizenSection('track')">Track Complaint</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUICK ACTIONS -->
+        <section class="quick-actions">
+            <div class="container">
+                <div class="section-heading center">
+                    <span class="small-title">CITIZEN SERVICES</span>
+                    <h2>How can we help you?</h2>
+                    <p>Choose a service to raise or track your concern.</p>
+                </div>
+                <div class="action-grid">
+                    <a href="#citizen-submit" class="action-card" onclick="showCitizenSection('submit')">
+                        <div class="action-icon green">&#x1F4DD;</div>
+                        <h3>Submit a Complaint</h3>
+                        <p>Report a local issue or development-related concern to help bring attention to your community.</p>
+                        <span class="card-link">Submit Now &rarr;</span>
+                    </a>
+                    <a href="#citizen-track" class="action-card" onclick="showCitizenSection('track')">
+                        <div class="action-icon blue">&#x1F50D;</div>
+                        <h3>Track Complaint</h3>
+                        <p>Enter your Complaint ID to check the current status of your submitted complaint.</p>
+                        <span class="card-link">Track Now &rarr;</span>
+                    </a>
+                    <a href="#citizen-about" class="action-card" onclick="showCitizenSection('about')">
+                        <div class="action-icon gold">&#x2139;&#xFE0F;</div>
+                        <h3>About the Initiative</h3>
+                        <p>Learn how citizen feedback can contribute to better planning and community development.</p>
+                        <span class="card-link">Learn More &rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUBMIT COMPLAINT -->
+        <section id="citizen-submit" class="section submit-section citizen-section">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="small-title">CITIZEN SERVICE</span>
+                    <h2>Submit a Complaint</h2>
+                    <p>Please provide accurate information so that your concern can be properly recorded.</p>
+                </div>
+                <div class="form-wrapper">
+                    <div class="form-header">
+                        <div>
+                            <span class="form-number">01</span>
+                            <div>
+                                <h3>Complaint Details</h3>
+                                <p>All fields marked with * are required.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form id="complaintForm">
+                        <div class="form-section">
+                            <h4>Personal Information</h4>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="name">Full Name *</label>
+                                    <input type="text" id="name" placeholder="Enter your full name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Mobile Number</label>
+                                    <input type="tel" id="phone" placeholder="Enter mobile number">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-section">
+                            <h4>Location</h4>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="village">Village / Locality *</label>
+                                    <input type="text" id="village" placeholder="Enter village or locality" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="district">District *</label>
+                                    <input type="text" id="district" placeholder="Enter district" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-section">
+                            <h4>Complaint Information</h4>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="category">Problem Category *</label>
+                                    <select id="category" required>
+                                        <option value="">Select a category</option>
+                                        <option value="Roads">Roads &amp; Infrastructure</option>
+                                        <option value="Healthcare">Healthcare</option>
+                                        <option value="Education">Education</option>
+                                        <option value="Water">Water &amp; Sanitation</option>
+                                        <option value="Electricity">Electricity</option>
+                                        <option value="Employment">Employment</option>
+                                        <option value="Transport">Public Transport</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="language">Preferred Language *</label>
+                                    <select id="language" required>
+                                        <option value="">Select language</option>
+                                        <option value="Assamese">Assamese</option>
+                                        <option value="Bengali">Bengali</option>
+                                        <option value="Bodo">Bodo</option>
+                                        <option value="Dogri">Dogri</option>
+                                        <option value="Gujarati">Gujarati</option>
+                                        <option value="Hindi">Hindi</option>
+                                        <option value="Kannada">Kannada</option>
+                                        <option value="Kashmiri">Kashmiri</option>
+                                        <option value="Konkani">Konkani</option>
+                                        <option value="Maithili">Maithili</option>
+                                        <option value="Malayalam">Malayalam</option>
+                                        <option value="Manipuri">Manipuri</option>
+                                        <option value="Marathi">Marathi</option>
+                                        <option value="Odia">Odia</option>
+                                        <option value="Punjabi">Punjabi</option>
+                                        <option value="Sanskrit">Sanskrit</option>
+                                        <option value="Santali">Santali</option>
+                                        <option value="Sindhi">Sindhi</option>
+                                        <option value="Tamil">Tamil</option>
+                                        <option value="Telugu">Telugu</option>
+                                        <option value="Urdu">Urdu</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>How serious is the problem? *</label>
+                                <div class="severity-options">
+                                    <label class="severity-card low">
+                                        <input type="radio" name="severity" value="Low" required>
+                                        <span>&#x1F7E2;</span>
+                                        <div><strong>Low</strong><small>General inconvenience</small></div>
+                                    </label>
+                                    <label class="severity-card medium">
+                                        <input type="radio" name="severity" value="Medium">
+                                        <span>&#x1F7E1;</span>
+                                        <div><strong>Medium</strong><small>Needs attention soon</small></div>
+                                    </label>
+                                    <label class="severity-card high">
+                                        <input type="radio" name="severity" value="High">
+                                        <span>&#x1F534;</span>
+                                        <div><strong>High</strong><small>Requires urgent attention</small></div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Describe Your Problem *</label>
+                                <textarea id="description" rows="6" placeholder="Please describe the problem clearly..." required></textarea>
+                                <div class="smart-tools">
+                                    <button type="button" class="smart-tool" id="voiceButton">&#x1F3A4; Speak Complaint</button>
+                                    <button type="button" class="smart-tool" id="similarButton">&#x1F50E; Check Similar Complaints</button>
+                                </div>
+                                <p id="voiceStatus" class="smart-status"></p>
+                                <div id="similarResults" class="smart-results hidden"></div>
+                            </div>
+                        </div>
+                        <div class="form-section">
+                            <h4>Supporting Evidence</h4>
+                            <div class="upload-box">
+                                <div class="upload-icon">&#x1F4F7;</div>
+                                <h4>Upload a Photograph</h4>
+                                <p>A photograph can help explain the issue. This is optional.</p>
+                                <label for="photo" class="upload-button">Choose Photo</label>
+                                <input type="file" id="photo" accept="image/*" hidden>
+                                <p id="fileName" class="file-name"></p>
+                                <img id="photoPreview" class="photo-preview" alt="Selected complaint photo">
+                                <div id="photoAnalysis" class="photo-analysis hidden"></div>
+                            </div>
+                        </div>
+                        <div class="form-footer">
+                            <p>By submitting this form, you confirm that the information provided is accurate.</p>
+                            <button type="submit" class="btn btn-primary submit-button">Submit Complaint <span>&rarr;</span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- SUCCESS -->
+        <section id="success" class="success-section hidden">
+            <div class="container">
+                <div class="success-card">
+                    <div class="success-icon">&#x2713;</div>
+                    <span class="small-title">SUBMISSION SUCCESSFUL</span>
+                    <h2>Your complaint has been submitted.</h2>
+                    <p>Please save your Complaint ID. You will need it to track the status of your complaint.</p>
+                    <div class="complaint-id-box">
+                        <span>YOUR COMPLAINT ID</span>
+                        <strong id="generatedId">CMP-1001</strong>
+                    </div>
+                    <div class="success-buttons">
+                        <button class="btn btn-primary" onclick="copyComplaintId()">Copy Complaint ID</button>
+                        <a href="#citizen-track" class="btn btn-secondary" onclick="showCitizenSection('track')">Track Complaint</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TRACK -->
+        <section id="citizen-track" class="section track-section citizen-section">
+            <div class="container">
+                <div class="section-heading center">
+                    <span class="small-title">COMPLAINT STATUS</span>
+                    <h2>Track Your Complaint</h2>
+                    <p>Enter the Complaint ID you received after submitting your complaint.</p>
+                </div>
+                <div class="track-card">
+                    <form id="trackForm">
+                        <label for="trackId">Complaint ID</label>
+                        <div class="track-input">
+                            <input type="text" id="trackId" placeholder="Example: CMP-1001" required>
+                            <button type="submit" class="btn btn-primary">Track</button>
+                        </div>
+                    </form>
+                    <div id="trackResult" class="track-result hidden"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section id="citizen-about" class="section about-section citizen-section">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <span class="small-title">ABOUT THE INITIATIVE</span>
+                        <h2>Building better communities through citizen participation.</h2>
+                        <p>JanNiti is a citizen-focused digital platform designed to provide a simple and accessible way for people to communicate development-related problems in their communities.</p>
+                        <p>The platform organizes citizen complaints by category, location and urgency so that important community concerns can be identified and given appropriate attention.</p>
+                    </div>
+                    <div class="about-card">
+                        <h3>How It Works</h3>
+                        <div class="process-item"><span>01</span><div><strong>Submit</strong><p>Tell us about a problem in your area.</p></div></div>
+                        <div class="process-item"><span>02</span><div><strong>Record</strong><p>Your complaint receives a unique ID.</p></div></div>
+                        <div class="process-item"><span>03</span><div><strong>Track</strong><p>Use your ID to check complaint status.</p></div></div>
+                        <div class="process-item"><span>04</span><div><strong>Improve</strong><p>Citizen feedback helps identify community priorities.</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div>
+                <div class="footer-logo">JanNiti</div>
+                <p>Citizen Development Portal</p>
+            </div>
+            <div class="footer-links">
+                <a href="#citizen-home" onclick="showCitizenSection('home')">Home</a>
+                <a href="#citizen-submit" onclick="showCitizenSection('submit')">Submit Complaint</a>
+                <a href="#citizen-track" onclick="showCitizenSection('track')">Track Complaint</a>
+                <a href="#citizen-about" onclick="showCitizenSection('about')">About</a>
+            </div>
+            <div class="footer-bottom">&copy; 2026 JanNiti. Prototype for Hackathon Demonstration.</div>
+        </div>
+    </footer>
+
+    <div id="citizenToast" class="toast">Complaint ID copied!</div>
+</div>
+
+
+<!-- =====================================================
+     ADMIN PORTAL
+===================================================== -->
+<div id="adminPortal" class="portal hidden">
+
+    <!-- ADMIN LOGIN SCREEN -->
+    <div id="adminLoginScreen" class="admin-login-screen">
+        <div class="admin-login-card">
+            <div class="admin-login-header">
+                <div class="admin-login-logo">
+                    <div class="logo-symbol">JN</div>
+                </div>
+                <h2>Admin Login</h2>
+                <p>Sign in to access the administration dashboard</p>
+            </div>
+            <form id="adminLoginForm" class="admin-login-form">
+                <div class="admin-login-field">
+                    <label for="adminUsername">Username</label>
+                    <input type="text" id="adminUsername" placeholder="Enter username" required autocomplete="username">
+                </div>
+                <div class="admin-login-field">
+                    <label for="adminPassword">Password</label>
+                    <input type="password" id="adminPassword" placeholder="Enter password" required autocomplete="current-password">
+                </div>
+                <div id="adminLoginError" class="admin-login-error hidden"></div>
+                <button type="submit" id="adminLoginBtn" class="btn btn-primary admin-login-btn">
+                    <span class="admin-login-btn-text">Sign In</span>
+                    <span class="admin-login-btn-loading hidden">Signing in...</span>
+                </button>
+            </form>
+            <div class="admin-login-footer">
+                <a href="#" onclick="showPortal('landing'); return false;">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN DASHBOARD (hidden until authenticated) -->
+    <div id="adminDashboard" class="hidden">
+    <aside class="sidebar" id="sidebar">
+        <div class="brand" onclick="adminLogout()" title="Click to logout" style="cursor:pointer;">
+            <div class="brand-logo">JN</div>
+            <div class="brand-info">
+                <h2>JanNiti</h2>
+                <span>Government Portal</span>
+            </div>
+        </div>
+        <div class="nav-title">ADMINISTRATION</div>
+        <nav class="side-nav">
+            <button class="nav-button active" data-section="dashboard"><span class="nav-icon">&#x25A6;</span><span>Dashboard</span></button>
+            <button class="nav-button" data-section="complaints"><span class="nav-icon">&#x25A4;</span><span>Complaints</span></button>
+            <button class="nav-button" data-section="analysis"><span class="nav-icon">&#x25EB;</span><span>Analysis</span></button>
+            <button class="nav-button" data-section="priority"><span class="nav-icon">&#x25C6;</span><span>Priority Issues</span></button>
+            <button class="nav-button" onclick="showPortal('landing')"><span class="nav-icon">&#x2302;</span><span>Home</span></button>
+        </nav>
+        <div class="admin-profile">
+            <div class="avatar">AD</div>
+            <div>
+                <strong>Administrator</strong>
+                <small>District Administration</small>
+            </div>
+            <button class="admin-logout-btn" onclick="adminLogout()" title="Logout">Logout</button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <div class="topbar-left">
+                <button class="menu-button" id="menuButton">&#9776;</button>
+                <div>
+                    <span class="top-label">ADMINISTRATIVE PORTAL</span>
+                    <h1 id="pageTitle">Development Dashboard</h1>
+                </div>
+            </div>
+            <div class="topbar-right">
+                <a href="#" class="switch-link-admin" onclick="showPortal('citizen'); return false;">Switch to Citizen</a>
+                <span id="currentDate"></span>
+                <div class="notification">&#x1F514;<span id="notificationCount">0</span></div>
+            </div>
+        </header>
+
+        <div class="page-container">
+            <!-- DASHBOARD -->
+            <section class="page-section active-section" id="dashboard">
+                <div class="section-header">
+                    <div>
+                        <span class="section-label">OVERVIEW</span>
+                        <h2>Community Feedback Overview</h2>
+                        <p>Monitor citizen complaints and development issues.</p>
+                    </div>
+                    <button class="refresh-button" id="refreshButton">&#x21BB; Refresh Data</button>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-icon teal">&#x25A4;</div><div><span>Total Complaints</span><strong id="totalComplaints">0</strong><small>All submitted complaints</small></div></div>
+                    <div class="stat-card"><div class="stat-icon gold">&#x23F7;</div><div><span>Pending</span><strong id="pendingComplaints">0</strong><small>Awaiting review</small></div></div>
+                    <div class="stat-card"><div class="stat-icon orange">!</div><div><span>Under Review</span><strong id="reviewComplaints">0</strong><small>Currently being reviewed</small></div></div>
+                    <div class="stat-card"><div class="stat-icon green">&#x2713;</div><div><span>Resolved</span><strong id="resolvedComplaints">0</strong><small>Successfully resolved</small></div></div>
+                </div>
+                <div class="two-column">
+                    <div class="card">
+                        <div class="card-header">
+                            <div><span class="section-label">COMMUNITY NEEDS</span><h3>Priority Issues</h3></div>
+                            <span class="gold-symbol">&#x25C6;</span>
+                        </div>
+                        <div id="dashboardPriorityList"></div>
+                        <button class="text-button" data-section-target="priority">View All Priority Issues &rarr;</button>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <div><span class="section-label">DISTRIBUTION</span><h3>Issue Categories</h3></div>
+                        </div>
+                        <div id="dashboardCategoryList"></div>
+                        <button class="text-button" data-section-target="analysis">View Full Analysis &rarr;</button>
+                    </div>
+                </div>
+                <div class="card large-card">
+                    <div class="card-header">
+                        <div><span class="section-label">CITIZEN REPORTS</span><h3>Recent Complaints</h3></div>
+                        <button class="text-button" data-section-target="complaints">View All &rarr;</button>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead><tr><th>ID</th><th>Category</th><th>Location</th><th>Severity</th><th>Status</th><th>Priority</th><th>Action</th></tr></thead>
+                            <tbody id="dashboardTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- COMPLAINTS -->
+            <section class="page-section" id="complaints">
+                <div class="section-header">
+                    <div>
+                        <span class="section-label">CITIZEN REPORTS</span>
+                        <h2>Complaint Management</h2>
+                        <p>Review and manage complaints submitted by citizens.</p>
+                    </div>
+                </div>
+                <div class="filter-card">
+                    <div class="search-box"><span>&#x2315;</span><input type="text" id="searchInput" placeholder="Search complaint ID, category or location..."></div>
+                    <select id="statusFilter">
+                        <option value="All">All Status</option>
+                        <option value="Submitted">Submitted</option>
+                        <option value="Under Review">Under Review</option>
+                        <option value="Action Planned">Action Planned</option>
+                        <option value="Resolved">Resolved</option>
+                    </select>
+                    <select id="severityFilter">
+                        <option value="All">All Severity</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </div>
+                <div class="card large-card">
+                    <div class="table-container">
+                        <table>
+                            <thead><tr><th>Complaint ID</th><th>Category</th><th>Citizen</th><th>Location</th><th>Severity</th><th>Status</th><th>Priority</th><th>Action</th></tr></thead>
+                            <tbody id="complaintsTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ANALYSIS -->
+            <section class="page-section" id="analysis">
+                <div class="section-header">
+                    <div>
+                        <span class="section-label">DATA ANALYSIS</span>
+                        <h2>Complaint Analysis</h2>
+                        <p>Understand the distribution of citizen complaints.</p>
+                    </div>
+                </div>
+                <div class="analysis-grid">
+                    <div class="card">
+                        <div class="card-header"><div><span class="section-label">CATEGORY</span><h3>Complaints by Category</h3></div></div>
+                        <div id="analysisCategoryList"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header"><div><span class="section-label">STATUS</span><h3>Complaint Status</h3></div></div>
+                        <div id="statusAnalysis"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header"><div><span class="section-label">SUMMARY</span><h3>Administrative Summary</h3></div></div>
+                    <div class="summary-grid" id="summaryGrid"></div>
+                </div>
+            </section>
+
+            <!-- PRIORITY -->
+            <section class="page-section" id="priority">
+                <div class="section-header">
+                    <div>
+                        <span class="section-label">URGENT ISSUES</span>
+                        <h2>Priority Issues</h2>
+                        <p>Complaints requiring greater administrative attention.</p>
+                    </div>
+                </div>
+                <div class="priority-banner">
+                    <div><strong>Priority Score</strong><p>Higher scores indicate issues that may require earlier attention.</p></div>
+                    <div class="priority-legend">
+                        <span class="high">&#x25CF; High</span>
+                        <span class="medium">&#x25CF; Medium</span>
+                        <span class="low">&#x25CF; Low</span>
+                    </div>
+                </div>
+                <div class="card large-card">
+                    <div class="table-container">
+                        <table>
+                            <thead><tr><th>Rank</th><th>Category</th><th>Reported issues</th><th>Citizen demand</th><th>Urgency weight</th><th>Hotspot score</th><th>Priority score</th><th>Band</th></tr></thead>
+                            <tbody id="priorityTable"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- COMPLAINT DETAILS MODAL -->
+    <div class="modal-overlay hidden" id="modalOverlay">
+        <div class="modal">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <span class="section-label">COMPLAINT DETAILS</span>
+            <h2 id="modalTitle">Complaint</h2>
+            <p class="modal-id" id="modalId"></p>
+            <div class="details-grid" id="modalDetails"></div>
+            <div class="description-box"><span>COMPLAINT DESCRIPTION</span><p id="modalDescription"></p></div>
+            <div class="status-update">
+                <label>Update Complaint Status</label>
+                <select id="modalStatus">
+                    <option value="Submitted">Submitted</option>
+                    <option value="Under Review">Under Review</option>
+                    <option value="Action Planned">Action Planned</option>
+                    <option value="Resolved">Resolved</option>
+                </select>
+                <button id="updateStatusButton">Update Status</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast" id="adminToast">Updated successfully</div>
+    </div><!-- end adminDashboard -->
+</div><!-- end adminPortal -->
+
+
+<!-- =====================================================
+     BACKEND API URL
+     Local development points at the FastAPI dev server.
+     For deployment, change this line to your hosted backend
+     URL, e.g.  window.CIVICAI_API_URL = "https://civicai.onrender.com";
+     app.js reads this via window.CIVICAI_API_URL with a
+     fallback to http://127.0.0.1:8010.
+===================================================== -->
+<script>
+    window.CIVICAI_API_URL = "http://127.0.0.1:8010";
+</script>
+<script src="app.js"></script>
+</body>
+</html>

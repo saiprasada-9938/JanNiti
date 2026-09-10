@@ -1,0 +1,25 @@
+# Runtime dependencies for the CivicAI backend.
+# Generated from the packages actually imported by the app (verified in Python 3.13).
+
+fastapi==0.141.1
+uvicorn[standard]==0.52.1
+SQLAlchemy==2.0.51
+pydantic==2.13.4
+
+# Auth (admin JWT + bcrypt login)
+python-jose[cryptography]==3.5.0
+bcrypt==5.0.0
+python-dotenv==1.2.2
+
+# File uploads
+python-multipart==0.0.32
+
+# Gemini text + photo analysis
+google-genai==2.18.1
+
+# ML complaint classification (app/ml/ml_service.py, app/services/similar_service.py)
+scikit-learn==1.9.0
+joblib==1.5.3
+
+# Only needed to retrain the classifier (backend/scripts/train_model.py); safe to omit
+pandas==3.0.5

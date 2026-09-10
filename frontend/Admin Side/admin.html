@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>JanNiti | Government Administration</title>
+
+    <link rel="stylesheet" href="admin.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     ADMIN LOGIN OVERLAY
+===================================================== -->
+
+<div id="adminLoginScreen">
+
+    <div class="admin-login-card">
+
+        <div class="admin-login-header">
+
+            <div class="admin-login-logo">
+                <div class="logo-symbol">JN</div>
+            </div>
+
+            <h2>Admin Login</h2>
+
+            <p>Sign in to access the administration dashboard</p>
+
+        </div>
+
+        <form id="adminLoginForm">
+
+            <div class="admin-login-field">
+                <label for="adminUsername">Username</label>
+                <input
+                    type="text"
+                    id="adminUsername"
+                    placeholder="Enter username"
+                    required
+                    autocomplete="username"
+                >
+            </div>
+
+            <div class="admin-login-field">
+                <label for="adminPassword">Password</label>
+                <input
+                    type="password"
+                    id="adminPassword"
+                    placeholder="Enter password"
+                    required
+                    autocomplete="current-password"
+                >
+            </div>
+
+            <div
+                id="adminLoginError"
+                class="admin-login-error"
+                style="display: none;"
+            ></div>
+
+            <button
+                type="submit"
+                id="adminLoginBtn"
+            >
+                Sign In
+            </button>
+
+        </form>
+
+        <div class="admin-login-footer">
+            JanNiti Administrator Panel
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<aside class="sidebar" id="sidebar">
+
+
+    <!-- LOGO -->
+
+    <div class="brand">
+
+        <div class="brand-logo">
+            JN
+        </div>
+
+        <div class="brand-info">
+
+            <h2>JanNiti</h2>
+
+            <span>Government Portal</span>
+
+        </div>
+
+    </div>
+
+
+    <!-- NAVIGATION -->
+
+    <div class="nav-title">
+        ADMINISTRATION
+    </div>
+
+
+    <nav class="side-nav">
+
+
+        <button
+            class="nav-button active"
+            data-section="dashboard"
+        >
+
+            <span class="nav-icon">▦</span>
+
+            <span>Dashboard</span>
+
+        </button>
+
+
+        <button
+            class="nav-button"
+            data-section="complaints"
+        >
+
+            <span class="nav-icon">▤</span>
+
+            <span>Complaints</span>
+
+        </button>
+
+
+        <button
+            class="nav-button"
+            data-section="analysis"
+        >
+
+            <span class="nav-icon">◫</span>
+
+            <span>Analysis</span>
+
+        </button>
+
+
+        <button
+            class="nav-button"
+            data-section="priority"
+        >
+
+            <span class="nav-icon">◆</span>
+
+            <span>Priority Issues</span>
+
+        </button>
+
+
+    </nav>
+
+
+    <!-- ADMIN PROFILE -->
+
+    <div class="admin-profile">
+
+        <div class="avatar">
+            AD
+        </div>
+
+        <div>
+
+            <strong>Administrator</strong>
+
+            <small>District Administration</small>
+
+        </div>
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="main-content">
+
+
+    <!-- TOP BAR -->
+
+    <header class="topbar">
+
+
+        <div class="topbar-left">
+
+            <button
+                class="menu-button"
+                id="menuButton"
+            >
+                ☰
+            </button>
+
+
+            <div>
+
+                <span class="top-label">
+                    ADMINISTRATIVE PORTAL
+                </span>
+
+                <h1 id="pageTitle">
+                    Development Dashboard
+                </h1>
+
+            </div>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+            <button
+                class="admin-logout-btn"
+                id="adminLogoutBtn"
+                style="display: none;"
+            >
+                Logout
+            </button>
+
+            <span id="currentDate"></span>
+
+            <div class="notification">
+
+                🔔
+
+                <span id="notificationCount">
+                    0
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </header>
+
+
+
+    <!-- =================================================
+         PAGE CONTAINER
+    ================================================= -->
+
+    <div class="page-container">
+
+
+
+        <!-- =================================================
+             DASHBOARD SECTION
+        ================================================= -->
+
+        <section
+            class="page-section active-section"
+            id="dashboard"
+        >
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        OVERVIEW
+                    </span>
+
+                    <h2>
+                        Community Feedback Overview
+                    </h2>
+
+                    <p>
+                        Monitor citizen complaints and
+                        development issues.
+                    </p>
+
+                </div>
+
+
+                <button
+                    class="refresh-button"
+                    id="refreshButton"
+                >
+
+                    ↻ Refresh Data
+
+                </button>
+
+            </div>
+
+
+
+            <!-- STATISTICS -->
+
+            <div class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon teal">
+                        ▤
+                    </div>
+
+                    <div>
+
+                        <span>Total Complaints</span>
+
+                        <strong id="totalComplaints">
+                            0
+                        </strong>
+
+                        <small>
+                            All submitted complaints
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon gold">
+                        ◷
+                    </div>
+
+                    <div>
+
+                        <span>Pending</span>
+
+                        <strong id="pendingComplaints">
+                            0
+                        </strong>
+
+                        <small>
+                            Awaiting review
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon orange">
+                        !
+                    </div>
+
+                    <div>
+
+                        <span>Under Review</span>
+
+                        <strong id="reviewComplaints">
+                            0
+                        </strong>
+
+                        <small>
+                            Currently being reviewed
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon green">
+                        ✓
+                    </div>
+
+                    <div>
+
+                        <span>Resolved</span>
+
+                        <strong id="resolvedComplaints">
+                            0
+                        </strong>
+
+                        <small>
+                            Successfully resolved
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- DASHBOARD CARDS -->
+
+            <div class="two-column">
+
+
+                <!-- PRIORITY -->
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="section-label">
+                                COMMUNITY NEEDS
+                            </span>
+
+                            <h3>
+                                Priority Issues
+                            </h3>
+
+                        </div>
+
+                        <span class="gold-symbol">
+                            ◆
+                        </span>
+
+                    </div>
+
+
+                    <div id="dashboardPriorityList">
+
+                    </div>
+
+
+                    <button
+                        class="text-button"
+                        data-section-target="priority"
+                    >
+                        View All Priority Issues →
+                    </button>
+
+                </div>
+
+
+
+                <!-- CATEGORY -->
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="section-label">
+                                DISTRIBUTION
+                            </span>
+
+                            <h3>
+                                Issue Categories
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="dashboardCategoryList">
+
+                    </div>
+
+
+                    <button
+                        class="text-button"
+                        data-section-target="analysis"
+                    >
+                        View Full Analysis →
+                    </button>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- RECENT COMPLAINTS -->
+
+            <div class="card large-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            CITIZEN REPORTS
+                        </span>
+
+                        <h3>
+                            Recent Complaints
+                        </h3>
+
+                    </div>
+
+
+                    <button
+                        class="text-button"
+                        data-section-target="complaints"
+                    >
+                        View All →
+                    </button>
+
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>ID</th>
+
+                                <th>Category</th>
+
+                                <th>Location</th>
+
+                                <th>Severity</th>
+
+                                <th>Status</th>
+
+                                <th>Priority</th>
+
+                                <th>Action</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="dashboardTable"
+                        >
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             COMPLAINTS SECTION
+        ================================================= -->
+
+        <section
+            class="page-section"
+            id="complaints"
+        >
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        CITIZEN REPORTS
+                    </span>
+
+                    <h2>
+                        Complaint Management
+                    </h2>
+
+                    <p>
+                        Review and manage complaints
+                        submitted by citizens.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- SEARCH -->
+
+            <div class="filter-card">
+
+                <div class="search-box">
+
+                    <span>⌕</span>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search complaint ID, category or location..."
+                    >
+
+                </div>
+
+
+                <select id="statusFilter">
+
+                    <option value="All">
+                        All Status
+                    </option>
+
+                    <option value="Submitted">
+                        Submitted
+                    </option>
+
+                    <option value="Under Review">
+                        Under Review
+                    </option>
+
+                    <option value="Action Planned">
+                        Action Planned
+                    </option>
+
+                    <option value="Resolved">
+                        Resolved
+                    </option>
+
+                </select>
+
+
+                <select id="severityFilter">
+
+                    <option value="All">
+                        All Severity
+                    </option>
+
+                    <option value="High">
+                        High
+                    </option>
+
+                    <option value="Medium">
+                        Medium
+                    </option>
+
+                    <option value="Low">
+                        Low
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <div class="card large-card">
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Complaint ID</th>
+
+                                <th>Category</th>
+
+                                <th>Citizen</th>
+
+                                <th>Location</th>
+
+                                <th>Severity</th>
+
+                                <th>Status</th>
+
+                                <th>Priority</th>
+
+                                <th>Action</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="complaintsTable"
+                        >
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             ANALYSIS SECTION
+        ================================================= -->
+
+        <section
+            class="page-section"
+            id="analysis"
+        >
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        DATA ANALYSIS
+                    </span>
+
+                    <h2>
+                        Complaint Analysis
+                    </h2>
+
+                    <p>
+                        Understand the distribution of
+                        citizen complaints.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="analysis-grid">
+
+
+                <!-- CATEGORY ANALYSIS -->
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="section-label">
+                                CATEGORY
+                            </span>
+
+                            <h3>
+                                Complaints by Category
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="analysisCategoryList">
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- STATUS ANALYSIS -->
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="section-label">
+                                STATUS
+                            </span>
+
+                            <h3>
+                                Complaint Status
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="statusAnalysis">
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- SUMMARY -->
+
+            <div class="card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <span class="section-label">
+                            SUMMARY
+                        </span>
+
+                        <h3>
+                            Administrative Summary
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="summary-grid"
+                    id="summaryGrid"
+                >
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             PRIORITY SECTION
+        ================================================= -->
+
+        <section
+            class="page-section"
+            id="priority"
+        >
+
+
+            <div class="section-header">
+
+                <div>
+
+                    <span class="section-label">
+                        URGENT ISSUES
+                    </span>
+
+                    <h2>
+                        Priority Issues
+                    </h2>
+
+                    <p>
+                        Complaints requiring greater
+                        administrative attention.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="priority-banner">
+
+                <div>
+
+                    <strong>
+                        Priority Score
+                    </strong>
+
+                    <p>
+                        Higher scores indicate issues
+                        that may require earlier attention.
+                    </p>
+
+                </div>
+
+
+                <div class="priority-legend">
+
+                    <span class="high">
+                        ● High
+                    </span>
+
+                    <span class="medium">
+                        ● Medium
+                    </span>
+
+                    <span class="low">
+                        ● Low
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="card large-card">
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>Rank</th>
+
+                                <th>Category</th>
+
+                                <th>Reported issues</th>
+
+                                <th>Citizen demand</th>
+
+                                <th>Urgency weight</th>
+
+                                <th>Hotspot score</th>
+
+                                <th>Priority score</th>
+
+                                <th>Band</th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody
+                            id="priorityTable"
+                        >
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+    </div>
+
+</main>
+
+
+
+<!-- =====================================================
+     COMPLAINT DETAILS MODAL
+===================================================== -->
+
+<div
+    class="modal-overlay hidden"
+    id="modalOverlay"
+>
+
+
+    <div class="modal">
+
+
+        <button
+            class="close-modal"
+            id="closeModal"
+        >
+            ×
+        </button>
+
+
+        <span class="section-label">
+            COMPLAINT DETAILS
+        </span>
+
+
+        <h2 id="modalTitle">
+            Complaint
+        </h2>
+
+
+        <p
+            class="modal-id"
+            id="modalId"
+        >
+        </p>
+
+
+        <div
+            class="details-grid"
+            id="modalDetails"
+        >
+        </div>
+
+
+        <div class="description-box">
+
+            <span>
+                COMPLAINT DESCRIPTION
+            </span>
+
+            <p id="modalDescription">
+            </p>
+
+        </div>
+
+
+        <div class="status-update">
+
+            <label>
+                Update Complaint Status
+            </label>
+
+
+            <select id="modalStatus">
+
+                <option value="Submitted">
+                    Submitted
+                </option>
+
+                <option value="Under Review">
+                    Under Review
+                </option>
+
+                <option value="Action Planned">
+                    Action Planned
+                </option>
+
+                <option value="Resolved">
+                    Resolved
+                </option>
+
+            </select>
+
+
+            <button
+                id="updateStatusButton"
+            >
+                Update Status
+            </button>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+    class="toast"
+    id="toast"
+>
+    Updated successfully
+</div>
+
+
+
+<script src="admin.js"></script>
+
+</body>
+
+</html>

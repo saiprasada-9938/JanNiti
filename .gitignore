@@ -1,0 +1,15 @@
+backend/venv/
+backend/__pycache__/
+backend/**/*.pyc
+backend/.env
+backend/.pytest_cache/
+*.pyc
+__pycache__/
+
+# uploads/ is gitignored because it holds runtime citizen photo evidence.
+# The folder itself is created at startup by backend/main.py.
+backend/uploads/
+
+# Local database and backup archives
+backend/*.db
+*.zip

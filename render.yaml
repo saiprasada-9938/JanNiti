@@ -1,0 +1,21 @@
+# Render blueprint for the CivicAI backend.
+# Connect this repo to Render; it will auto-detect this file on first deploy.
+# buildCommand / startCommand override the default for this repo layout
+# (the backend lives in backend/; app entrypoint is backend/main.py).
+
+services:
+  - type: web
+    name: civicai-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ADMIN_USERNAME
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        sync: false
