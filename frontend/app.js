@@ -434,11 +434,11 @@ if (complaintForm) {
             });
 
             if (!response.ok) {
-                const errorData = await response.json();
-                console.error("Backend error:", errorData);
-                alert("Failed to submit complaint. Please try again.");
-                return;
-            }
+    const errorText = await response.text();
+    console.error("Backend error:", response.status, errorText);
+    alert(`Backend error ${response.status}: ${errorText}`);
+    return;
+}
 
             const result = await response.json();
             console.log("Backend response:", result);
@@ -466,7 +466,7 @@ if (complaintForm) {
 
         } catch (error) {
             console.error("Connection error:", error);
-            alert("Cannot connect to backend. Make sure FastAPI is running on port 8010.");
+    alert(`Connection error: ${error.message}`);
         } finally {
             citizenComplaintSubmitting = false;
         }
