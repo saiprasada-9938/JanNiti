@@ -3,8 +3,7 @@
    Combined Citizen + Admin JavaScript
    ===================================================== */
 
-const API_BASE_URL = window.CIVICAI_API_URL || "https://janniti.antideploy.com";
-
+const API_BASE_URL = window.CIVICAI_API_URL || "https://jannitigov.antideploy.com";
 
 /* =====================================================
    ADMIN AUTHENTICATION
