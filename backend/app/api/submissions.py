@@ -1,4 +1,5 @@
 from fastapi import APIRouter, BackgroundTasks, Depends, File, HTTPException, UploadFile
+from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session
 import json
 
@@ -84,25 +85,60 @@ def run_ai_analysis(submission_id: int) -> None:
 
 @router.post("/upload-photo")
 async def upload_complaint_photo(file: UploadFile = File(...)):
-    """Save evidence quickly; Gemini will inspect it after complaint submission."""
+    """Save complaint evidence and return its filename and API URL."""
+
     allowed_types = {"image/jpeg", "image/png", "image/webp"}
+
     if file.content_type not in allowed_types:
-        raise HTTPException(status_code=400, detail="Please upload a JPG, PNG, or WebP image.")
+        raise HTTPException(
+            status_code=400,
+            detail="Please upload a JPG, PNG, or WebP image."
+        )
 
     image_bytes = await file.read()
-    if len(image_bytes) > 8 * 1024 * 1024:
-        raise HTTPException(status_code=400, detail="Image must be 8 MB or smaller.")
 
-    upload_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "uploads"))
-    filename = save_photo(image_bytes, file.filename or "complaint.jpg", upload_dir)
+    if not image_bytes:
+        raise HTTPException(
+            status_code=400,
+            detail="Uploaded photo is empty."
+        )
+
+    if len(image_bytes) > 8 * 1024 * 1024:
+        raise HTTPException(
+            status_code=400,
+            detail="Image must be 8 MB or smaller."
+        )
+
+    upload_dir = os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__),
+            "..",
+            "..",
+            "uploads"
+        )
+    )
+
+    filename = save_photo(
+        image_bytes,
+        file.filename or "complaint.jpg",
+        upload_dir
+    )
+
+    saved_path = os.path.abspath(
+        os.path.join(upload_dir, filename)
+    )
+
+    print(f"[UPLOAD] filename: {filename}")
+    print(f"[UPLOAD] path: {saved_path}")
+    print(f"[UPLOAD] exists: {os.path.isfile(saved_path)}")
 
     return {
         "message": "Photo uploaded successfully",
         "data": {
-            "photo_filename": filename
+            "photo_filename": filename,
+            "photo_url": f"/api/submissions/photo/{filename}"
         }
     }
-
 
 @router.post("/analyze-photo")
 async def analyze_complaint_photo(file: UploadFile = File(...)):
@@ -117,6 +153,39 @@ async def analyze_complaint_photo(file: UploadFile = File(...)):
     filename = save_photo(image_bytes, file.filename or "complaint.jpg", upload_dir)
     return {"message": "Photo analyzed successfully", "data": {"photo_filename": filename, "analysis": analyze_photo(image_bytes, file.content_type)}}
 
+@router.get("/photo/{filename}")
+async def get_complaint_photo(filename: str):
+    """Serve an uploaded complaint photo directly through FastAPI."""
+
+    upload_dir = os.path.abspath(
+        os.path.join(
+            os.path.dirname(__file__),
+            "..",
+            "..",
+            "uploads"
+        )
+    )
+
+    # Prevent path traversal.
+    safe_filename = os.path.basename(filename)
+
+    file_path = os.path.abspath(
+        os.path.join(upload_dir, safe_filename)
+    )
+
+    print(f"[PHOTO REQUEST] {file_path}")
+    print(f"[PHOTO EXISTS] {os.path.isfile(file_path)}")
+
+    if not os.path.isfile(file_path):
+        raise HTTPException(
+            status_code=404,
+            detail="Photo not found"
+        )
+
+    return FileResponse(
+        file_path,
+        filename=safe_filename
+    )
 
 # =========================
 # SIMILAR COMPLAINT DETECTION

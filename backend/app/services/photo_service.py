@@ -57,11 +57,31 @@ If the image does not clearly show a civic issue, say so and use Other.
 
 
 def save_photo(image_bytes: bytes, original_name: str, upload_dir: str) -> str:
+    """Save uploaded complaint photo safely."""
+
+    upload_dir = os.path.abspath(upload_dir)
     os.makedirs(upload_dir, exist_ok=True)
+
     extension = os.path.splitext(original_name or "")[1].lower()
+
     if extension not in {".jpg", ".jpeg", ".png", ".webp"}:
         extension = ".jpg"
+
     filename = f"{uuid.uuid4().hex}{extension}"
-    with open(os.path.join(upload_dir, filename), "wb") as file:
+
+    file_path = os.path.abspath(
+        os.path.join(upload_dir, filename)
+    )
+
+    with open(file_path, "wb") as file:
         file.write(image_bytes)
+
+    if not os.path.isfile(file_path):
+        raise RuntimeError(
+            f"Photo was not saved successfully: {file_path}"
+        )
+
+    print(f"[PHOTO] Saved successfully: {file_path}")
+    print(f"[PHOTO] Size: {os.path.getsize(file_path)} bytes")
+
     return filename

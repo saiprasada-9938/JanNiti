@@ -645,7 +645,7 @@ function adminRenderPhotoEvidence(complaint) {
     const evidence = adminMakeReadableSummary(analysis.visible_evidence || analysis.description,
         isPending ? "The photo is saved and AI analysis will appear shortly."
             : "The uploaded photo is available for administrative review.");
-    const imageUrl = `${API_BASE_URL}/uploads/${encodeURIComponent(complaint.photo_filename)}`;
+   const imageUrl = `${API_BASE_URL}/api/submissions/photo/${encodeURIComponent(complaint.photo_filename)}`;
 
     return `
         <section class="photo-evidence">
