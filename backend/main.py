@@ -29,9 +29,16 @@ app.include_router(auth_router)
 app.include_router(submission_router)
 
 # Serve analyzed complaint photographs during the demo.
-upload_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "uploads"))
+# Serve uploaded complaint photographs
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+upload_dir = os.path.join(BASE_DIR, "uploads")
 os.makedirs(upload_dir, exist_ok=True)
-app.mount("/uploads", StaticFiles(directory=upload_dir), name="uploads")
+
+app.mount(
+    "/uploads",
+    StaticFiles(directory=upload_dir),
+    name="uploads"
+)
 
 
 @app.get("/")
